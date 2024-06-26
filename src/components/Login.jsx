@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import UserLogins from '../data/UserLogins';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Login() {
     const [loginDetails, setLoginDetails] = useState({
         username : '',
         password : ''
     });
+    const navigate = useNavigate();
     const [errMsg, setErrMsg] = useState('');
     const loginSubmitHandle = (e) => {
         e.preventDefault();
@@ -21,7 +23,7 @@ function Login() {
                 }
                 else{
                    localStorage.setItem("logindetail", JSON.stringify(loginDetails));
-                   
+                   <Navigate to={'/dashboard'} />
                 }
     };
     const inputHandle = (e) => {

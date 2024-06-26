@@ -10,27 +10,30 @@ function App() {
 const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 useEffect(()=>{
-  const localStItem = localStorage.getItem('logindetail')
-  if(localStItem){
-    try{
-      const localParse = JSON.parse(localStItem);
-      if(localParse.username){
-        setIsLoggedIn(true)
-      }
+  const localStItem = localStorage.getItem('logindetail');
+  try{
+    if(localStItem){
+        const localParse = JSON.parse(localStItem);
+        if(localParse.username){
+          setIsLoggedIn(true)
+        }
+        else{
+          setIsLoggedIn(false)
+        }
+    } else {
+      setIsLoggedIn(false)
     }
-    catch(error){
-      console.log('Error Parsing local store item', error)
-    }
+  } catch(error){
+    console.log('Error Parsing local store item', error)
   }
 },[]);
-console.log(isLoggedIn)
 
   return (
   <Router>
       <Routes>
-        <Route exact path='/' element={<Login />}></Route>
-        <Route path='/dashboard' element={isLoggedIn ? <TodoComp /> : <Navigate to='/login' /> }></Route>
-        <Route path='/*' element={<Navigate to='/login' />} />
+        <Route exact path='/login' element={ isLoggedIn ? <Navigate to={'/dashboard'} /> : <Login />  }></Route>
+         <Route path='/dashboard' element={ isLoggedIn ? <TodoComp /> : <Login />}></Route>
+         {/* <Route path='/*' element={ isLoggedIn ? <TodoComp /> : <Navigate to='/login' /> } /> */}
       </Routes>
   </Router>
   )
