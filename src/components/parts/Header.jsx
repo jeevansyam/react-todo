@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react';
-import '../../App.css';
-import { Navigate, redirect, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Navigate, redirect } from 'react-router-dom'
 
-function Header({isLog}) {
-    const navigate = useNavigate();
-    const logoutHandler = () => {
-       localStorage.removeItem('logindetail');
-        navigate('/login')
-        isLog(true)
-    }
+const Header = () => {
+  const logoutHandle = () => {
+    localStorage.removeItem('LoginDetails');
+    redirect('/login')
+  }
   return (
-    <header>
-        <div className="logo">Logo</div>
-        <div className="rightOptions">
-            <button onClick={logoutHandler}>Logout</button>
-        </div>
-    </header>
+    <div className="header">
+                <div className="user-info">
+                    <div className="welcome-text">Welcome, User</div>
+                    <img src="user-icon.png" alt="User Icon" width="20" height="20" />
+                </div>
+                <button className="logout-btn" onClick={logoutHandle}>Logout</button>
+            </div>
   )
 }
 

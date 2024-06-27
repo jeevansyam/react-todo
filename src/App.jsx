@@ -1,41 +1,52 @@
-import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import './App.css'
-import Login from './components/Login'
+import Sidebar from './components/parts/Sidebar'
+import Header from './components/parts/Header'
+import './assets/css/theme.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import TodoComp from './components/TodoComp'
+import Dashboard from './Dashboard'
+import UserLogin from './components/UserLogin'
 
 
-function App() {
+const App = () => {
+const [isLoggedin, setIsLoggedIn] = useState(false)
 
-const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-useEffect(()=>{
-  const localStItem = localStorage.getItem('logindetail');
-  try{
-    if(localStItem){
-        const localParse = JSON.parse(localStItem);
-        if(localParse.username){
-          setIsLoggedIn(true)
-        }
-        else{
-          setIsLoggedIn(false)
-        }
-    } else {
+useEffect( ()=> {
+  const StoredLogin = localStorage.getItem('LoginDetails');
+  const StoredLoginParse = JSON.parse(StoredLogin);
+  try {
+    if(StoredLoginParse){
+      setIsLoggedIn(true)
+    }
+    else{
       setIsLoggedIn(false)
     }
-  } catch(error){
-    console.log('Error Parsing local store item', error)
-  }
-},[]);
-
+  } catch(error){ `Parsing error ${error}`}
+},[])
   return (
-  <Router>
-      <Routes>
-        <Route exact path='/login' element={ isLoggedIn ? <Navigate to={'/dashboard'} /> : <Login />  }></Route>
-         <Route path='/dashboard' element={ isLoggedIn ? <TodoComp /> : <Login />}></Route>
-         {/* <Route path='/*' element={ isLoggedIn ? <TodoComp /> : <Navigate to='/login' /> } /> */}
-      </Routes>
-  </Router>
+    <div className="container">
+      {isLoggedin && <Sidebar />}
+      <div className="main-content">
+      {isLoggedin && <Header /> }
+          <div className="content">
+          
+              <Router>
+                <Routes>
+                  {
+                    isLoggedin ? 
+                    <Route path='/' element={<Dashboard />} /> 
+                    :
+                    <Route path='/' element={<UserLogin />} /> 
+                  }
+                  
+                </Routes>
+              </Router>
+          </div>
+      </div>
+      {/* <NewTodoList /> */}
+    </div>
+  
   )
 }
 
