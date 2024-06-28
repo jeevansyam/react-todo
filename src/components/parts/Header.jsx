@@ -1,10 +1,9 @@
 import React from 'react';
-import { Navigate, redirect } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({onLogout}) => {
   const logoutHandle = () => {
     localStorage.removeItem('LoginDetails');
-    redirect('/login')
+    onLogout(false)
   }
   return (
     <div className="header">

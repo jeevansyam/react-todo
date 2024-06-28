@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {v4 as uuidV4} from 'uuid';
 import  TodoListObj  from '../data/TodoListData'
-import Header from './parts/Header';
-import { redirect, useNavigate } from 'react-router-dom';
 
    
 
@@ -12,7 +10,7 @@ function TodoComp() {
     const [popup, openPopup] = useState(false);
     const [issueNo, setIssueNo]= useState('');
     const [taskName, setTaskName] = useState('');
-    const navigate = useNavigate()
+
     
     const searchHandle = (e) => {
         setSearchVal(e.target.value.trim());
@@ -47,15 +45,9 @@ function TodoComp() {
         setTaskName(value)
        }
     }
-    const isLogHandle = (value) => {
-        if(value === true){
-            return redirect('/login')
-            console.log('success');
-        }
-    }
+
   return (
-    <div className='container'>
-        <Header isLog={isLogHandle} />
+    <div className='main-container'>
         <div className="search">
             <input type="text" placeholder='Search task' value={searchVal} onChange={searchHandle}  />
             <button 

@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const UserLogin = () => {
+const UserLogin = ({onLogin}) => {
     const [inputFields, setInputFields] = useState({
         username: '',
         password: '',
     })
     const loginDetail = 'LoginDetails';
+    const navigate = useNavigate();
     const {username, password} = inputFields;
     const inputHandler = (e) => {
             const {name, value} = e.target;
@@ -15,6 +17,8 @@ const UserLogin = () => {
         e.preventDefault();
         localStorage.setItem(loginDetail, JSON.stringify(inputFields));
         setInputFields({username:'', password: ''})
+        onLogin(true)
+        
     }
   return (
     <div className="login-container">
