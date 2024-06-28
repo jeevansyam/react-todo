@@ -18,7 +18,7 @@ const handleLogin = (value) => {
 }
 const handleLogout = (value) => {
   setIsLoggedIn(value)
-  console.log("value");
+  // console.log("value");
 }
 
 useEffect( ()=> {
@@ -33,10 +33,10 @@ useEffect( ()=> {
     }
   } catch(error){ 
     `Parsing error ${error}`;
-    setIsLoggedIn(false); // Handle parsing error by setting isLoggedIn to false
+    // setIsLoggedIn(false); // Handle parsing error by setting isLoggedIn to false
   }
 },[])
-console.log(isLoggedin)
+// console.log(isLoggedin)
   return (
    <Router>
     <Layout onLogout={handleLogout} >
