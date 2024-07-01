@@ -41,6 +41,7 @@ const Users = () => {
     },[])
   return (
     <div className="todo-container">
+        <h2>Users</h2>
         <div className="userFilters">
             <input type="text" value={filterInput} placeholder="Search.." onChange={filterHandle} />
         </div>
@@ -52,6 +53,7 @@ const Users = () => {
                     <th>Username</th>
                     <th>Email</th>
                     <th>Todo List</th>
+                    <th>Portfolio</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,6 +66,7 @@ const Users = () => {
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                                 <td><Link to={`/users/${user.id}`}>Todo List</Link></td>
+                                <td><Link to={`/users/${user.id}/albums`}>Portfolio</Link></td>
                         </tr>
                         )
                     )

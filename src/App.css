@@ -176,3 +176,16 @@ button{
 #root{
   width: 100%;
 }
+.albumsUl {
+  display: flex;
+  flex-wrap: wrap;
+}
+.albumsUl li {
+  padding: 30px;
+  margin: 20px;
+  border: 1px solid #ccc;
+}
+.photosUl{
+  display: flex;
+  flex-wrap: wrap;
+}

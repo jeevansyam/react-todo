@@ -9,6 +9,8 @@ import Layout from './components/parts/Layout'
 import MyAccount from './components/MyAccount'
 import Users from './components/Users'
 import UserTodos from './components/UserTodos'
+import UserPortfolio from './components/UserPortfolio'
+import UserAlbums from './components/UserAlbums'
 
 
 const App = () => {
@@ -52,6 +54,8 @@ useEffect( ()=> {
           <Route path='/mytasks' element={ <TodoComp /> } />
           <Route path='/users' element={ <Users /> } />
           <Route path='/users/:id' element={ <UserTodos /> } />
+          <Route path='/users/:id/albums' element={ <UserAlbums /> } />
+          <Route path='/users/:userId/albums/:albumId' element={ <UserPortfolio /> } />
           <Route path='/' element={ <Dashboard /> } />
           </>)
         }

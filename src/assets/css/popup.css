@@ -1,0 +1,21 @@
+.popup{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0 ;
+    background: #00000025;
+}
+.popupBox{
+        width: 600px;
+        height: 600px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #FFF;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+   }
