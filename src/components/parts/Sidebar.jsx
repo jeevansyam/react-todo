@@ -7,6 +7,7 @@ const Sidebar = () => {
                 <li className="menu-item"><Link to={'/dashboard'}>Dashboard</Link></li> 
                 <li className="menu-item"><Link to={'/myaccount'}>My Account</Link></li> 
                 <li className="menu-item"><Link to={'/mytasks'}>My Tasks</Link></li> 
+                <li className="menu-item"><Link to={'/users'}>Users</Link></li> 
             </ul>
     </div>
   )

@@ -11,6 +11,7 @@ const Layout = ({children, onLogout}) => {
             const StorageItems = localStorage.getItem('LoginDetails');
             const StorageItemsParse = JSON.parse(StorageItems);
             setIsLoggedIn(!!StorageItemsParse);
+            
         },[onLogout])
         
   return (

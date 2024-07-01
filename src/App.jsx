@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import Sidebar from './components/parts/Sidebar'
-import Header from './components/parts/Header'
 import './assets/css/theme.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import TodoComp from './components/TodoComp'
@@ -9,6 +7,8 @@ import Dashboard from './Dashboard'
 import UserLogin from './components/UserLogin'
 import Layout from './components/parts/Layout'
 import MyAccount from './components/MyAccount'
+import Users from './components/Users'
+import UserTodos from './components/UserTodos'
 
 
 const App = () => {
@@ -18,7 +18,6 @@ const handleLogin = (value) => {
 }
 const handleLogout = (value) => {
   setIsLoggedIn(value)
-  // console.log("value");
 }
 
 useEffect( ()=> {
@@ -51,6 +50,8 @@ useEffect( ()=> {
           <Route path='/dashboard' element={ <Dashboard /> } />
           <Route path='/myaccount' element={ <MyAccount /> } />
           <Route path='/mytasks' element={ <TodoComp /> } />
+          <Route path='/users' element={ <Users /> } />
+          <Route path='/users/:id' element={ <UserTodos /> } />
           <Route path='/' element={ <Dashboard /> } />
           </>)
         }
